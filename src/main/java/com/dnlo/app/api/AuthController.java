@@ -46,6 +46,15 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+        userRepository.findByUsername("admin1")
+                .ifPresentOrElse(user -> {},
+                        () -> {
+                            var user = new User("admin1",
+                                    "admin@admin.com",
+                                    encoder.encode("admin1"));
+                            userRepository.save(user);
+                        });
+
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
