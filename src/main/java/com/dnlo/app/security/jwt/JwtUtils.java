@@ -30,22 +30,11 @@ public class JwtUtils {
     private String jwtCookie;
 
     public String getJwtFromCookies(HttpServletRequest request) {
-        Cookie cookie = WebUtils.getCookie(request, jwtCookie);
-        if (cookie != null) {
-            return cookie.getValue();
-        } else {
-            return null;
-        }
+        return request.getHeader(jwtCookie);
     }
 
-    public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
-        String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-        return ResponseCookie.from(jwtCookie, jwt)
-                .domain("speed-app-front.vercel.app")
-                .path("/api")
-                .maxAge(24 * 60 * 60)
-                .httpOnly(true)
-                .build();
+    public String generateJwt(UserDetailsImpl userPrincipal) {
+        return generateTokenFromUsername(userPrincipal.getUsername());
     }
 
     public ResponseCookie getCleanJwtCookie() {

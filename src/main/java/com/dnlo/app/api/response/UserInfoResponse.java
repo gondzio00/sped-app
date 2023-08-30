@@ -20,5 +20,6 @@ public class UserInfoResponse {
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
+		this.jwtToken = jwtToken;
 	}
 }
