@@ -16,7 +16,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/packages")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://78.10.148.26:4200", maxAge = 3600, allowCredentials="true")
 public class PackageController {
 
     private final PackageRepository packageRepository;

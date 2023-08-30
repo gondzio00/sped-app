@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/manipulation")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://78.10.148.26:4200", maxAge = 3600, allowCredentials="true")
 public class ManipulationDataController {
 
     private final ReadDataHandler readDataHandler;
