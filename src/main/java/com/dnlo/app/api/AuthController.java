@@ -13,6 +13,7 @@ import com.dnlo.app.security.jwt.JwtUtils;
 import com.dnlo.app.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -65,6 +67,7 @@ public class AuthController {
         String jwt = jwtUtils.generateJwt(userDetails);
 
         System.out.println("JWT" + jwt);
+        log.info("SET JWT " + jwt);
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
