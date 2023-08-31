@@ -24,8 +24,8 @@ public class PackageController {
     private final ReadDataHandler readDataHandler;
 
     @GetMapping
-    public ResponseEntity<List<PackageEntity>> getAll() {
-        return ResponseEntity.ok(packageRepository.getAll());
+    public ResponseEntity<List<PackageData>> getAll() {
+        return ResponseEntity.ok(packageRepository.findAll());
     }
 
     @PostMapping("/upload")

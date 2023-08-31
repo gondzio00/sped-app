@@ -15,10 +15,6 @@ public class PackageRepository {
         packageJpaRepository.saveAll(packageEntities);
     }
 
-    public List<PackageEntity> getAll() {
-        return packageJpaRepository.findAll();
-    }
-
     public List<PackageData> findAllByPackageNumber(String packageNumber) {
         return packageJpaRepository.findAllByPackageNumberContaining(packageNumber);
     }
